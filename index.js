@@ -3,7 +3,9 @@ require('dotenv').config();
 const fs = require("node:fs");
 const path = require("node:path");
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require('discord.js');
-
+const { Player } = require('discord-player');
+const { DefaultExtractors } = require('@discord-player/extractor');
+ 
 const client = new Client({ intents: [GatewayIntentBits.Guilds,
   GatewayIntentBits.GuildMessages,
   GatewayIntentBits.MessageContent,
@@ -43,6 +45,8 @@ for (const file of eventFiles) {
 	}
 }
 
-
+// this is the entrypoint for discord-player based application
+const player = new Player(client);
+player.extractors.loadMulti(DefaultExtractors)
 
 client.login(process.env.TOKEN);
