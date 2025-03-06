@@ -1,36 +1,36 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { joinVoiceChannel, getVoiceConnections } = require("@discordjs/voice");
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName("join")
-        .setDescription("Bot will join your current voice."),
-    async execute(interaction) {
-    
-        //Locate active voice channel
-        const activeVoiceChannel = interaction.member.voice.channel;
+  data: new SlashCommandBuilder()
+    .setName("join")
+    .setDescription("Bot will join your current voice."),
+  async execute(interaction) {
 
-        if (!activeVoiceChannel) {
-            return interaction.reply("Join a voice channel BOYS!!.");
-        } else {
-            console.log("Current VC: ", activeVoiceChannel.id);
-        }
+    //Locate active voice channel
+    const activeVoiceChannel = interaction.member.voice.channel;
 
-        try {
-                // Join the active voice channel
-                const connection = joinVoiceChannel({
-                channelId: activeVoiceChannel.id,
-                guildId: activeVoiceChannel.guild.id,
-                adapterCreator: activeVoiceChannel.guild.voiceAdapterCreator,
-            });
+    if (!activeVoiceChannel) {
+      return interaction.reply("Join a voice channel BOYS!!.");
+    } else {
+      console.log("Current VC: ", activeVoiceChannel.id);
+    }
 
-            console.log(getVoiceConnections());
-            await interaction.reply(`Congrats BOYS!!  Joined: ${activeVoiceChannel.name}.`);
+    try {
+      // Join the active voice channel
+      const connection = joinVoiceChannel({
+        channelId: activeVoiceChannel.id,
+        guildId: activeVoiceChannel.guild.id,
+        adapterCreator: activeVoiceChannel.guild.voiceAdapterCreator,
+      });
 
-        }
-        catch (error) {
-            console.log(error);
-            await interaction.reply("Could not join voice channel BOYS!!.");
-        }
-    },
+      console.log(getVoiceConnections());
+      await interaction.reply(`Congrats BOYS!!  Joined: ${activeVoiceChannel.name}.`);
+
+    }
+    catch (error) {
+      console.log(error);
+      await interaction.reply("Could not join voice channel BOYS!!.");
+    }
+  },
 };
 

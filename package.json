@@ -26,6 +26,7 @@
     "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
     "libsodium-wrappers": "^0.7.15",
+    "prettier": "^3.5.3",
     "ytdl-core": "^4.11.5"
   },
   "devDependencies": {

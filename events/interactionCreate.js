@@ -35,13 +35,6 @@ module.exports = {
     setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
 
 
-    // if (interaction.isautocomplete()) {
-    //     // handling autocomplete requests
-    //     await command.autocompleterun(interaction);
-    // } else if(interaction.ischatinputcommand()){
-    //     // handling chat slashcommand  requests
-    //     await command.execute(interaction);
-    // }
 
 
 
